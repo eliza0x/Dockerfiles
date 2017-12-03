@@ -13,7 +13,9 @@ RUN apt install -y haskell-stack
 
 # ghcをビルド
 RUN stack setup
-RUN stack init
+
+RUN mkdir -p /root/.stack/global-project/
+RUN echo 'extra-deps:\n- roman-numerals-0.5.1.5\n' >> /root/.stack/global-project/stack.yaml
 
 # pandoc他をインストール
 # 理論上はビルドに失敗しないはず、祈れ
